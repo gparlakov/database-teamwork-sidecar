@@ -18,14 +18,17 @@ namespace Supermarket.TransferData
             {
                 using (var mySqlDbContext = new SupermarketDbMySQL())
                 {
-                    Console.WriteLine("Loading products...");
-                    ProductsTransfer(mySqlDbContext);
+                    //Console.WriteLine("Loading products...");
+                    //ProductsTransfer(mySqlDbContext);
 
-                    Console.WriteLine("Loading Remaining Measures...");
-                    TransferRemainingMeasures(mySqlDbContext);
+                    //Console.WriteLine("Loading Remaining Measures...");
+                    //TransferRemainingMeasures(mySqlDbContext);
 
-                    Console.WriteLine("Loading Remaining Vendors...");
-                    TransferRemainingVendors(mySqlDbContext);
+                    //Console.WriteLine("Loading Remaining Vendors...");
+                    //TransferRemainingVendors(mySqlDbContext);
+
+                    //TestUploaded();
+                    
                 }
             }
             catch (Exception ex)
@@ -42,6 +45,18 @@ namespace Supermarket.TransferData
             }
         }
 
+        private static void TestUploaded()
+        {
+            using (var dbContextSuper = new SupermarketDB())
+            {
+                var products = dbContextSuper.Products.Include("Measure").Include("Vendor");
+                foreach (var product in products)
+                {
+                    Console.WriteLine(product.Vendor.VendorName + " " + product.Vendors_ID);
+                }
+            }
+        }
+
         private static void ProductsTransfer(SupermarketDbMySQL mySqlDbContext)
         {            
             using (var sqlDbContext = new SupermarketDB())
@@ -50,27 +65,46 @@ namespace Supermarket.TransferData
                 var uploadedVendorsIds = sqlDbContext.Vendors.Select(v => v.ID).ToList();
                 var uploadedMeasuresIds = sqlDbContext.Measures.Select(m => m.ID).ToList();
 
-                var products = mySqlDbContext.Products
+                var newProducts = mySqlDbContext.Products
                     .Include(x => x.Vendor)
                     .Include(x => x.Measure)
                     .Where(p => !uploadedProductsIds.Contains(p.ID)).ToList();
-                
-                foreach (var product in products)
-                {
-                    if (uploadedVendorsIds.Contains(product.Vendor.ID))
-                    {
-                        sqlDbContext.Vendors.Attach(product.Vendor);
-                    }                    
 
-                    if (uploadedMeasuresIds.Contains(product.Measure.ID))
-                    {
-                        sqlDbContext.Measures.Attach(product.Measure);
-                    }                    
-                    
-                    sqlDbContext.Products.Add(product);
+                UploadNewProducts(sqlDbContext, uploadedVendorsIds, uploadedMeasuresIds, newProducts);
+                               
+                sqlDbContext.SaveChanges();
+            }
+        }
+
+        private static void UploadNewProducts(
+            SupermarketDB sqlDbContext, List<int> uploadedVendorsIds,
+            List<int> uploadedMeasuresIds, List<Product> products)
+        {
+            foreach (var product in products)
+            {                
+                if (uploadedVendorsIds.Contains(product.Vendor.ID))
+                {
+                    sqlDbContext.Vendors.Attach(product.Vendor);
+                }
+                else
+                {
+                    var newVendor = new Vendor { VendorName = product.Vendor.VendorName, ID = product.Vendor.ID };
+                    sqlDbContext.Vendors.Add(newVendor);
+                    product.Vendor = newVendor;
                 }
 
-                sqlDbContext.SaveChanges();
+                if (uploadedMeasuresIds.Contains(product.Measure.ID))
+                {
+                    sqlDbContext.Measures.Attach(product.Measure);
+                }
+                else
+                {
+                    var newMeasure = new Measure { MeasureName = product.Measure.MeasureName, ID = product.Measure.ID };
+                    sqlDbContext.Measures.Add(newMeasure);
+                    product.Measure = newMeasure;
+                }
+
+                sqlDbContext.Products.Add(product);
             }
         }
 
