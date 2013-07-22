@@ -14,74 +14,85 @@ namespace Supermarket.TransferData
     {
         static void Main()
         {
-            using (var mySqlDbContext = new SupermarketDbMySQL())
+            try
             {
-                var products = mySqlDbContext.Products.Include(x => x.Vendor).Include(x => x.Measure).ToList();
-                using (var sqlDbContext = new SupermarketDB())
+                using (var mySqlDbContext = new SupermarketDbMySQL())
                 {
-                    foreach (var product in products)
-                    {
-                        sqlDbContext.Products.Add(product);
-                    }
+                    Console.WriteLine("Loading products...");
+                    ProductsTransfer(mySqlDbContext);
 
-                    sqlDbContext.SaveChanges();
+                    Console.WriteLine("Loading Remaining Measures...");
+                    TransferRemainingMeasures(mySqlDbContext);
+
+                    Console.WriteLine("Loading Remaining Vendors...");
+                    TransferRemainingVendors(mySqlDbContext);
                 }
-                
-                //TransferMeasures(mySqlDbContext);
+            }
+            catch (Exception ex)
+            {
+                var message = new StringBuilder();
+                message.Append(ex.Message);
+                while (ex.InnerException != null)
+                {
+                    ex = ex.InnerException;
+                    message.AppendLine(ex.Message);
+                }
 
-                //TransferVendors(mySqlDbContext);
-
-                //TransferProducts(mySqlDbContext);
+                Console.WriteLine(message);        
             }
         }
 
-        private static void TransferMeasures(SupermarketDbMySQL mySqlDbContext)
+        private static void ProductsTransfer(SupermarketDbMySQL mySqlDbContext)
         {
-            var measures = mySqlDbContext.Measures.ToList();
-
             
             using (var sqlDbContext = new SupermarketDB())
             {
+                var uploadedProductsIds = sqlDbContext.Products.Select(p => p.ID).ToList();
+
+                var products = mySqlDbContext.Products
+                    .Include(x => x.Vendor)
+                    .Include(x => x.Measure)
+                    .Where(p => !uploadedProductsIds.Contains(p.ID)).ToList();
                 
-                foreach (var measure in measures)
-                {                    
-                    sqlDbContext.Measures.Add(measure);//new Measure {Name = measure.MeasureName}                    
-                }
-
-                //sqlDbContext.Database.ExecuteSqlCommand("SET IDENTITY_INSERT Supermarket.dbo.Measures ON");
-                //sqlDbContext.Database.ExecuteSqlCommand("SET IDENTITY_INSERT Supermarket.dbo.Vendors ON");
-                //sqlDbContext.Database.ExecuteSqlCommand("SET IDENTITY_INSERT Supermarket.dbo.Products ON");
-
-                sqlDbContext.SaveChanges();                
-            }
-        }
-
-        private static void TransferVendors(SupermarketDbMySQL mySqlDbContext)
-        {
-            var vendors = mySqlDbContext.Vendors.ToList();
-
-
-            using (var sqlDbContext = new SupermarketDB())
-            {
-                foreach (var vendor in vendors)
+                foreach (var product in products)
                 {
-                    sqlDbContext.Vendors.Add(vendor);
+                    sqlDbContext.Measures.Attach(product.Measure);
+                    sqlDbContext.Vendors.Attach(product.Vendor);
+                    sqlDbContext.Products.Add(product);
                 }
 
                 sqlDbContext.SaveChanges();
             }
         }
 
-        private static void TransferProducts(SupermarketDbMySQL mySqlDbContext)
-        {
-            var products = mySqlDbContext.Products.ToList();
-
-
+        private static void TransferRemainingMeasures(SupermarketDbMySQL mySqlDbContext)
+        {           
             using (var sqlDbContext = new SupermarketDB())
             {
-                foreach (var product in products)
+                var uploadedMeasuresIds = sqlDbContext.Measures.Select(m => m.ID).ToList();
+
+                var measures = mySqlDbContext.Measures.Where(m => !uploadedMeasuresIds.Contains(m.ID)).ToList();
+
+                foreach (var measure in measures)
                 {
-                    sqlDbContext.Products.Add(product);
+                    sqlDbContext.Measures.Add(measure);                                                          
+                }                
+
+                sqlDbContext.SaveChanges();                
+            }
+        }
+
+        private static void TransferRemainingVendors(SupermarketDbMySQL mySqlDbContext)
+        {           
+            using (var sqlDbContext = new SupermarketDB())
+            {
+                var uploadedVendorsIds = sqlDbContext.Vendors.Select(v => v.ID).ToList();
+
+                var vendors = mySqlDbContext.Vendors.Where(v => !uploadedVendorsIds.Contains(v.ID)).ToList();           
+               
+                foreach (var vendor in vendors)
+                {
+                    sqlDbContext.Vendors.Add(vendor);                     
                 }
 
                 sqlDbContext.SaveChanges();
