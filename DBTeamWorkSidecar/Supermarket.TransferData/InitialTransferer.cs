@@ -43,11 +43,12 @@ namespace Supermarket.TransferData
         }
 
         private static void ProductsTransfer(SupermarketDbMySQL mySqlDbContext)
-        {
-            
+        {            
             using (var sqlDbContext = new SupermarketDB())
             {
                 var uploadedProductsIds = sqlDbContext.Products.Select(p => p.ID).ToList();
+                var uploadedVendorsIds = sqlDbContext.Vendors.Select(v => v.ID).ToList();
+                var uploadedMeasuresIds = sqlDbContext.Measures.Select(m => m.ID).ToList();
 
                 var products = mySqlDbContext.Products
                     .Include(x => x.Vendor)
@@ -56,8 +57,16 @@ namespace Supermarket.TransferData
                 
                 foreach (var product in products)
                 {
-                    sqlDbContext.Measures.Attach(product.Measure);
-                    sqlDbContext.Vendors.Attach(product.Vendor);
+                    if (uploadedVendorsIds.Contains(product.Vendor.ID))
+                    {
+                        sqlDbContext.Vendors.Attach(product.Vendor);
+                    }                    
+
+                    if (uploadedMeasuresIds.Contains(product.Measure.ID))
+                    {
+                        sqlDbContext.Measures.Attach(product.Measure);
+                    }                    
+                    
                     sqlDbContext.Products.Add(product);
                 }
 
