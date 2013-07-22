@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<sales>
+	<sale vendor="Zagorka Corp.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="2,50" />
+	</sale>
+	<sale vendor="Targovishte Bottling Company Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="8,34" />
+	</sale>
+	<sale vendor="Zagorka Corp.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="3,00" />
+	</sale>
+	<sale vendor="Nestle Sofia Corp.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="2,55" />
+	</sale>
+	<sale vendor="Zagorka Corp.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="2,30" />
+	</sale>
+	<sale vendor="Nestle Sofia Corp.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="1,20" />
+	</sale>
+	<sale vendor="Mc Donalds  Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="3,00" />
+	</sale>
+	<sale vendor="Milk Sofia  Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="1,00" />
+	</sale>
+	<sale vendor="Devin">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="0,65" />
+	</sale>
+	<sale vendor="Fantastico Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="3,45" />
+	</sale>
+	<sale vendor="Carlsberg Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="5,20" />
+	</sale>
+	<sale vendor="Tefal  Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="30,00" />
+	</sale>
+	<sale vendor="Karnobat  Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="15,50" />
+	</sale>
+	<sale vendor="Pepsi Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="1,20" />
+	</sale>
+	<sale vendor="Pepsi Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="3,00" />
+	</sale>
+	<sale vendor="Jim Beam Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="30,00" />
+	</sale>
+	<sale vendor="Jim Beam Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="40,00" />
+	</sale>
+	<sale vendor="Jack Daniels  Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="40,00" />
+	</sale>
+	<sale vendor="Jack Daniels  Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="50,00" />
+	</sale>
+	<sale vendor="Clever Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="1,00" />
+	</sale>
+	<sale vendor="Adidas">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="100,00" />
+	</sale>
+	<sale vendor="Aro Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="2,00" />
+	</sale>
+	<sale vendor="Carlsberg Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="3,00" />
+	</sale>
+	<sale vendor="Coca-Cola Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="1,20" />
+	</sale>
+	<sale vendor="Coca-Cola Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="2,50" />
+	</sale>
+	<sale vendor="Coca-Cola Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="2,50" />
+	</sale>
+	<sale vendor="Zagorka Corp.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="2,50" />
+	</sale>
+	<sale vendor="Targovishte Bottling Company Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="8,34" />
+	</sale>
+	<sale vendor="Zagorka Corp.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="3,00" />
+	</sale>
+	<sale vendor="Nestle Sofia Corp.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="2,55" />
+	</sale>
+	<sale vendor="Zagorka Corp.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="2,30" />
+	</sale>
+	<sale vendor="Nestle Sofia Corp.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="1,20" />
+	</sale>
+	<sale vendor="Mc Donalds  Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="3,00" />
+	</sale>
+	<sale vendor="Milk Sofia  Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="1,00" />
+	</sale>
+	<sale vendor="Devin">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="0,65" />
+	</sale>
+	<sale vendor="Fantastico Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="3,45" />
+	</sale>
+	<sale vendor="Carlsberg Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="1,20" />
+	</sale>
+	<sale vendor="Tefal  Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="30,00" />
+	</sale>
+	<sale vendor="Karnobat  Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="15,50" />
+	</sale>
+	<sale vendor="Pepsi Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="1,20" />
+	</sale>
+	<sale vendor="Pepsi Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="3,00" />
+	</sale>
+	<sale vendor="Jim Beam Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="30,00" />
+	</sale>
+	<sale vendor="Jim Beam Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="40,00" />
+	</sale>
+	<sale vendor="Jack Daniels  Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="40,00" />
+	</sale>
+	<sale vendor="Jack Daniels  Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="50,00" />
+	</sale>
+	<sale vendor="Clever Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="1,00" />
+	</sale>
+	<sale vendor="Adidas">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="100,00" />
+	</sale>
+	<sale vendor="Aro Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="2,00" />
+	</sale>
+	<sale vendor="Carlsberg Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="3,00" />
+	</sale>
+	<sale vendor="Coca-Cola Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="1,20" />
+	</sale>
+	<sale vendor="Coca-Cola Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="2,50" />
+	</sale>
+	<sale vendor="Coca-Cola Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="3,50" />
+	</sale>
+	<sale vendor="Orbit Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="0,24" />
+	</sale>
+	<sale vendor="Orbit Ltd.">
+		<summary date="22.7.2013 г. 19:06:49" totalSum="3,24" />
+	</sale>
+</sales>
