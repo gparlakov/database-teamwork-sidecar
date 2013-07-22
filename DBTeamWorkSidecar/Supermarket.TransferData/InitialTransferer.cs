@@ -16,11 +16,22 @@ namespace Supermarket.TransferData
         {
             using (var mySqlDbContext = new SupermarketDbMySQL())
             {
-                TransferMeasures(mySqlDbContext);
+                var products = mySqlDbContext.Products.Include(x => x.Vendor).Include(x => x.Measure).ToList();
+                using (var sqlDbContext = new SupermarketDB())
+                {
+                    foreach (var product in products)
+                    {
+                        sqlDbContext.Products.Add(product);
+                    }
 
-                TransferVendors(mySqlDbContext);
+                    sqlDbContext.SaveChanges();
+                }
+                
+                //TransferMeasures(mySqlDbContext);
 
-                TransferProducts(mySqlDbContext);
+                //TransferVendors(mySqlDbContext);
+
+                //TransferProducts(mySqlDbContext);
             }
         }
 
@@ -37,9 +48,10 @@ namespace Supermarket.TransferData
                     sqlDbContext.Measures.Add(measure);//new Measure {Name = measure.MeasureName}                    
                 }
 
-                sqlDbContext.Database.ExecuteSqlCommand("SET IDENTITY_INSERT Supermarket.dbo.Measures ON");
-                sqlDbContext.Database.ExecuteSqlCommand("SET IDENTITY_INSERT Supermarket.dbo.Vendors ON");
-                sqlDbContext.Database.ExecuteSqlCommand("SET IDENTITY_INSERT Supermarket.dbo.Products ON");
+                //sqlDbContext.Database.ExecuteSqlCommand("SET IDENTITY_INSERT Supermarket.dbo.Measures ON");
+                //sqlDbContext.Database.ExecuteSqlCommand("SET IDENTITY_INSERT Supermarket.dbo.Vendors ON");
+                //sqlDbContext.Database.ExecuteSqlCommand("SET IDENTITY_INSERT Supermarket.dbo.Products ON");
+
                 sqlDbContext.SaveChanges();                
             }
         }
