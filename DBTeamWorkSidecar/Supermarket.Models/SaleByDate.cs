@@ -12,7 +12,8 @@ namespace Supermarket.Models
         public DateTime Date { get; set; }
 
         public int SupermarketId { get; set; }
-        public virtual Supermarket Supermarket { get; set; }
+
+        public int ProductId { get; set; }
 
         public float Quantity { get; set; }
 
