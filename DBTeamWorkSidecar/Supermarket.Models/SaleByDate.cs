@@ -9,6 +9,7 @@ namespace Supermarket.Models
     public class SaleByDate
     {
         public int Id { get; set; }
+
         public DateTime Date { get; set; }
 
         public int SupermarketId { get; set; }
