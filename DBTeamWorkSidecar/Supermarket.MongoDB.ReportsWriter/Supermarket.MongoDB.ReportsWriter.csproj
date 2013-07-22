@@ -68,6 +68,10 @@
       <Project>{6bfbebac-0b99-441e-9367-9a41777e3b2d}</Project>
       <Name>Supermarket.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Supermarket.OpenAccess.Models\Supermarket.OpenAccess.Models.csproj">
+      <Project>{c50145e6-a244-4f1f-b41f-90d1925b4a00}</Project>
+      <Name>Supermarket.OpenAccess.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
