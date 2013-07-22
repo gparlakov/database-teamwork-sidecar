@@ -4,7 +4,7 @@ USE `supermaret`;
 --
 -- Host: localhost    Database: supermaret
 -- ------------------------------------------------------
--- Server version	5.6.12-log
+-- Server version	5.6.12
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -59,7 +59,7 @@ CREATE TABLE `products` (
   KEY `fk_Products_Vendors1_idx` (`Vendors_ID`),
   CONSTRAINT `fk_Products_Measures` FOREIGN KEY (`Measures_ID`) REFERENCES `measures` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Products_Vendors1` FOREIGN KEY (`Vendors_ID`) REFERENCES `vendors` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,7 +68,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (1,'Beer “Zagorka”',2.50,100,2),(2,'Vodka “Targovishte”',8.34,100,3),(3,'Beer “Beck’s”',3.00,100,2),(4,'Chocolate “Milka”',2.55,200,1),(5,'Beer Amstel',2.30,100,2),(6,'Kit kat',1.20,200,1),(7,'Hamburger',3.00,200,8),(8,'Baba Milk',1.00,100,15),(9,'Mineral Water Devin',0.65,100,19),(10,'Cheese Fantastiko',3.45,300,18),(11,'Beer Pirinsko 5l.',5.20,100,14),(12,'Pan Tefal',30.00,200,16),(13,'Karnobatska Grozdova',15.50,100,13),(14,'Pepsi 0.5l.',1.20,100,7),(15,'Pepsi 3.5l.',3.00,100,7),(16,'Jim Beam 0.7l.',30.00,100,10),(17,'Jim Beam 1l.',40.00,100,10),(18,'Jack Daniels 0.7l.',40.00,100,9),(19,'Jack Daniels 1l.',50.00,100,9),(20,'Bread Billa',1.00,300,17),(21,'Trainers Adidas',100.00,200,20),(22,'Airfresher Aro',2.00,200,4),(23,'Beer Pirinsko 2.5l.',3.00,100,14),(24,'Coca-Cola 0.5l.',1.20,100,6),(25,'Coca-Cola 1.5l.',2.50,100,6),(26,'Coca-Cola 1.5l.',2.50,100,6),(27,'Beer “Zagorka”',2.50,100,2),(28,'Vodka “Targovishte”',8.34,100,3),(29,'Beer “Beck’s”',3.00,100,2),(30,'Chocolate “Milka”',2.55,200,1),(31,'Beer Amstel',2.30,100,2),(32,'Kit kat',1.20,200,1),(33,'Hamburger',3.00,200,8),(34,'Baba Milk',1.00,100,15),(35,'Mineral Water Devin',0.65,100,19),(36,'Cheese Fantastiko',3.45,300,18),(37,'Beer Pirinsko 0.5l.',1.20,100,14),(38,'Pan Tefal',30.00,200,16),(39,'Karnobatska Grozdova',15.50,100,13),(40,'Pepsi 0.5l.',1.20,100,7),(41,'Pepsi 2l.',3.00,100,7),(42,'Jim Beam 0.7l.',30.00,100,10),(43,'Jim Beam 1l.',40.00,100,10),(44,'Jack Daniels 0.7l.',40.00,100,9),(45,'Jack Daniels 1l.',50.00,100,9),(46,'Bread Billa',1.00,300,17),(47,'Trainers Adidas',100.00,200,20),(48,'Airfresher Aro',2.00,200,4),(49,'Beer Pirinsko 2.5l.',3.00,100,14),(50,'Coca-Cola 0.5l.',1.20,100,6),(51,'Coca-Cola 1.5l.',2.50,100,6),(52,'Coca-Cola 2.5l.',3.50,100,6);
+INSERT INTO `products` VALUES (1,'Beer “Zagorka”',2.50,100,2),(2,'Vodka “Targovishte”',8.34,100,3),(3,'Beer “Beck’s”',3.00,100,2),(4,'Chocolate “Milka”',2.55,200,1),(5,'Beer Amstel',2.30,100,2),(6,'Kit kat',1.20,200,1),(7,'Hamburger',3.00,200,8),(8,'Baba Milk',1.00,100,15),(9,'Mineral Water Devin',0.65,100,19),(10,'Cheese Fantastiko',3.45,300,18),(11,'Beer Pirinsko 5l.',5.20,100,14),(12,'Pan Tefal',30.00,200,16),(13,'Karnobatska Grozdova',15.50,100,13),(14,'Pepsi 0.5l.',1.20,100,7),(15,'Pepsi 3.5l.',3.00,100,7),(16,'Jim Beam 0.7l.',30.00,100,10),(17,'Jim Beam 1l.',40.00,100,10),(18,'Jack Daniels 0.7l.',40.00,100,9),(19,'Jack Daniels 1l.',50.00,100,9),(20,'Bread Billa',1.00,300,17),(21,'Trainers Adidas',100.00,200,20),(22,'Airfresher Aro',2.00,200,4),(23,'Beer Pirinsko 2.5l.',3.00,100,14),(24,'Coca-Cola 0.5l.',1.20,100,6),(25,'Coca-Cola 1.5l.',2.50,100,6),(26,'Coca-Cola 1.5l.',2.50,100,6),(27,'Beer “Zagorka”',2.50,100,2),(28,'Vodka “Targovishte”',8.34,100,3),(29,'Beer “Beck’s”',3.00,100,2),(30,'Chocolate “Milka”',2.55,200,1),(31,'Beer Amstel',2.30,100,2),(32,'Kit kat',1.20,200,1),(33,'Hamburger',3.00,200,8),(34,'Baba Milk',1.00,100,15),(35,'Mineral Water Devin',0.65,100,19),(36,'Cheese Fantastiko',3.45,300,18),(37,'Beer Pirinsko 0.5l.',1.20,100,14),(38,'Pan Tefal',30.00,200,16),(39,'Karnobatska Grozdova',15.50,100,13),(40,'Pepsi 0.5l.',1.20,100,7),(41,'Pepsi 2l.',3.00,100,7),(42,'Jim Beam 0.7l.',30.00,100,10),(43,'Jim Beam 1l.',40.00,100,10),(44,'Jack Daniels 0.7l.',40.00,100,9),(45,'Jack Daniels 1l.',50.00,100,9),(46,'Bread Billa',1.00,300,17),(47,'Trainers Adidas',100.00,200,20),(48,'Airfresher Aro',2.00,200,4),(49,'Beer Pirinsko 2.5l.',3.00,100,14),(50,'Coca-Cola 0.5l.',1.20,100,6),(51,'Coca-Cola 1.5l.',2.50,100,6),(52,'Coca-Cola 2.5l.',3.50,100,6),(53,'Gum \"Turbo\"',0.24,500,5),(54,'Caffee \"Nova Brasilia\"',3.24,400,5);
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -105,4 +105,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-07-22 12:49:41
+-- Dump completed on 2013-07-22 16:14:56
