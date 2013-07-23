@@ -27,8 +27,7 @@ namespace Supermarket.TransferData
                     //Console.WriteLine("Loading Remaining Vendors...");
                     //TransferRemainingVendors(mySqlDbContext);
 
-                    //TestUploaded();
-                    
+                    //TestUploaded();                    
                 }
             }
             catch (Exception ex)

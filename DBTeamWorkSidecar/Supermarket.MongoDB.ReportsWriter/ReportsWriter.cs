@@ -15,6 +15,9 @@ using Newtonsoft.Json;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.IO;
 using MongoDB.Bson.Serialization.Options;
+using System.Text.RegularExpressions;
+using System.IO;
+
 
 namespace Supermarket.MongoDBTest
 {
@@ -33,32 +36,68 @@ namespace Supermarket.MongoDBTest
         const string TotalQuantity = "total-quantity-sold";
         const string TotalIncome = "total-incomes";
 
+        const string FilesPath = "..\\..\\..\\..\\Product-Reports\\";
+        const string FileExt = ".json";
+
         static void Main(string[] args)
         {
             using (var supermarketDB = new SupermarketDB())
             {
+                Console.WriteLine("Getting data from SQL server....");
                 var productReports = GetTotalProductSales(supermarketDB);
 
                 var client = new MongoClient(Local);
-                //AllSalesReportsSqlToMongo(supermarketDB, productReports, client);
 
-                TestSaved(client);                             
-                
-                var json = JsonConvert.SerializeObject(productReports, Formatting.Indented);
-                Console.WriteLine(json);
-                
+                Console.WriteLine("Saving product reports to MongoDb (Local)....");
+                AllSalesReportsSqlToMongo(supermarketDB, productReports, client);
+
+                //TestSaved(client);                             
+
+                Console.WriteLine("Generating jsonFiles - output to {0}", FilesPath);
+                GenerateJsonReportFilesFiles(client);
             }
+        }
+
+        private static void GenerateJsonReportFilesFiles(MongoClient client)
+        {
+            var reportsFromMongo = GetReportsFromMongo(client);
+            var matchMongoIdRegEx = new Regex("\"_id.+?,");
+            foreach (var report in reportsFromMongo)
+            {
+                using (var writer = new StreamWriter(FilesPath + report[ProductId] + FileExt))
+                {
+                    var json = report.ToJson<BsonDocument>();
+                    //var json = report.ToString();
+                    json = matchMongoIdRegEx.Replace(json, "");
+                    json = json.Replace(",", ",\n").Replace("{ ", "{\n").Replace("}", "\n}");
+                    writer.Write(json);
+                }
+            }
+        }
+
+        private static MongoCursor<BsonDocument> GetReportsFromMongo(MongoClient client)
+        {
+            var db = client.GetServer().GetDatabase(Database);
+            var collection = db.GetCollection(CollectionReportsTest).FindAll();
+
+            return collection;
         }
 
         private static void TestSaved(MongoClient client)
         {
             var db = client.GetServer().GetDatabase(Database);
-            var collection = db.GetCollection(CollectionReportsTest).FindAll();     
-
+            var collection = db.GetCollection(CollectionReportsTest).FindAll();
+            
             foreach (var item in collection)
             {
                 Console.WriteLine("{0} -> {1}", item[ProductName], item[TotalQuantity]);
             }
+        }
+
+        private static object GetJsonCollection(MongoCursor<BsonDocument> collection)
+        {
+            var jsonCollection = new DoubleJsonToken("0,00", 2.54545d);
+            return jsonCollection;
         }
 
         private static void AllSalesReportsSqlToMongo(
