@@ -18,9 +18,9 @@ namespace ReportGenerator.cs
 
             using (dbContext)
             {
-                pdf.GeneratePDF(dbContext);
+                //pdf.GeneratePDF(dbContext);
 
-                //xml.GenerateXML(dbContext);
+                xml.GenerateXML(dbContext);
             }
         }
     }
